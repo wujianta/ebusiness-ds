@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.newit.microservice.ebusiness.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ItemRepository {
 
     @Autowired
     private RestTemplate restTemplate;
-
+    @Cacheable(value = "item",key="'item'+#itemId")
     public Item getItemById(long itemId) {
         Item item = restTemplate.getForObject("http://localhost:29610/item/" + itemId, Item.class);
         return item;
