@@ -31,4 +31,8 @@ public class ItemService {
     public List<Item> getItemAllList() {
         return itemRepository.getItemAllList();
     }
+
+    public List<Item> getItemAllLists() {
+        return itemRepository.getItemAllLists();
+    }
 }

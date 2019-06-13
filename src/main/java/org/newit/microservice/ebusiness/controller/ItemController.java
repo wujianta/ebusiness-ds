@@ -42,6 +42,14 @@ public class ItemController extends BaseController{
         return "/item/itemList";
     }
 
+
+    @RequestMapping("/item/allListredis")
+    public String itemAllLists(Model model){
+        List<Item> itemList = itemService.getItemAllLists();
+        model.addAttribute("itemList", itemList);
+        return "/item/aaaa";
+    }
+
     @RequestMapping("/item/detail/{itemId}")
     public String itemDetail(@PathVariable long itemId, Model model) {
         Item item = itemService.getItemById(itemId);
